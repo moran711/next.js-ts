@@ -10,8 +10,9 @@ export default function Posts({posts}) {
 }
 
 export async function getStaticProps(context: NextPageContext) {
-  const posts = [{ name: 'John Doe' }]
-
+  const data = await fetch(process.env.SERVER_URI + 'posts');
+  const posts = await data.json();
+  
   return {
     props: {
       posts
