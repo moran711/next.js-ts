@@ -10,17 +10,7 @@ export default function Posts({posts}) {
 }
 
 export async function getStaticProps(context: NextPageContext) {
-  const res = await fetch(`http://localhost:3000/api/posts`)
-  const posts = await res.json()
-
-  if (!posts) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
-    }
-  }
+  const posts = [{ name: 'John Doe' }]
 
   return {
     props: {
