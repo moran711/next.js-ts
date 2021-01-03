@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+import Main from "../components/main";
 
-export default function Home() {
+const Home:React.FC = () =>  {
   return (
-    <div>
-      first steps q
-    </div>
-  )
+    <main className="main">
+      <Main />
+    </main>
+  );
 }
+
+
+export default Home;
