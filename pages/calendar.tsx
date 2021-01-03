@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Calendar:React.FC = () => {
+const CalendarPage:React.FC = () => {
   return (
     <main>
     </main> 
   )
 }
 
-export default Calendar;
+export default CalendarPage;

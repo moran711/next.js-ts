@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Admin:React.FC = () => {
+const AdminPage:React.FC = () => {
   return (
     <main>
     </main> 
   )
 }
 
-export default Admin;
+export default AdminPage;

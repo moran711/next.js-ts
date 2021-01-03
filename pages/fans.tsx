@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Fans:React.FC = () => {
+const FansPage:React.FC = () => {
   return (
     <main>
     </main> 
   )
 }
 
-export default Fans;
+export default FansPage;

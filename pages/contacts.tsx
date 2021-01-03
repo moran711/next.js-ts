@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Contacts:React.FC = () => {
+const ContactsPage:React.FC = () => {
   return (
     <main>
     </main> 
   )
 }
 
-export default Contacts;
+export default ContactsPage;

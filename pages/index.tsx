@@ -1,7 +1,7 @@
 import React from "react";
 import Main from "../components/main";
 
-const Home:React.FC = () =>  {
+const HomePage:React.FC = () =>  {
   return (
     <main className="main">
       <Main />
@@ -10,4 +10,4 @@ const Home:React.FC = () =>  {
 }
 
 
-export default Home;
+export default HomePage;
