@@ -1,0 +1,136 @@
+.main {
+  margin: 10px;
+  & .banner {
+    width: auto;
+    display: inline-block;
+    overflow: hidden;
+
+    & .banner-photo {
+      display: block;
+      width: 100%;
+      animation: banner 5s;
+    }
+  }
+  & .history-of-fc {
+    & .header-history-of-fc {
+      text-align: center;
+    }
+    & .content-history-of-fc {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-areas:
+        "text text photo"
+        "text text photo";
+
+      & .text-container-history-of-fc {
+        grid-area: "text";
+        padding: 10px;
+      }
+      & .container-photo-history-of-fc {
+        grid-area: "photo";
+        transition: 1s;
+        display: block;
+        width: 300px;
+        &:hover {
+          transform: scale(1.05);
+        }
+        & .photo-history-of-fc {
+          width: 90%;
+        }
+      }
+    }
+  }
+
+  & .last-victory {
+    & .header-last-victory {
+      text-align: center;
+    }
+
+    & .content-last-victory {
+      height: 800px;
+      & .content-scope {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        & .scope {
+          font-size: 1.2em;
+          padding: 10px;
+        }
+        & img {
+          width: 30px;
+          height: 100%;
+        }
+      }
+      & .video-container-last-victory {
+        padding-top: 10px;
+        margin: auto;
+        width: 80%;
+        height: 700px;
+      }
+    }
+  }
+}
+
+@media (max-width: 767px){
+  .main {
+    & .history-of-fc {
+      & .content-history-of-fc {
+        grid-template-areas:
+        "text"
+        "photo";
+        justify-content: center;
+      }
+    }
+
+    & .last-victory {
+      & .content-last-victory {
+        height: 400px;
+        & .content-scope {
+          font-size: 0.75rem;
+          & .scope {
+            font-size: 1em;
+          }
+          & img {
+            height: 25px
+          }
+        }
+        & .video-container-last-victory {
+          height: 250px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px){
+  .main {
+
+    & .history-of-fc {
+      & .content-history-of-fc {
+        grid-template-areas:
+        "text"
+        "photo";
+        justify-content: center;
+      }
+    }
+
+    & .last-victory {
+      & .content-last-victory {
+        height: 500px;
+        & .video-container-last-victory {
+          height: 400px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes banner {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
