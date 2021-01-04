@@ -9,5 +9,7 @@ export default async (req: NextApiRequest, res:NextApiResponse) => {
     const comments = await Comment.find();
     res.statusCode = 200;
     res.json(comments);
+  } else if (req.method === 'POST') {
+    console.log(req.body);
   }
 }
