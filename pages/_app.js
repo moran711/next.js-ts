@@ -1,14 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Container } from '@material-ui/core';
+import createSagaMiddleware from 'redux-saga';
 import '../styles/index.scss';
 import Head from 'next/head';
 import NavMenu from '../components/nav-menu';
 import Footer from '../components/footer';
-import {rootReducer} from '../redux/rootReducer'
+import {rootReducer} from '../redux/rootReducer';
+import rootSaga from '../redux/rootSagas';
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 
-const store = createStore(rootReducer)
+sagaMiddleware.run(rootSaga);
 
 function MyApp({ Component, pageProps }) {
   return (
