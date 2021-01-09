@@ -1,8 +1,8 @@
 import ApolloClient from "apollo-boost";
-import { InMemoryCache } from "apollo-cache-inmemory";
+import { InMemoryCache, NormalizedCacheObject } from "apollo-cache-inmemory";
 
-export const client = new ApolloClient({
-  uri: process.env.SERVER_URI,
+export const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+  uri: '/api/graphql',
   cache: new InMemoryCache({ addTypename: false }),
 });
 ``;
