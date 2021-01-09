@@ -1,8 +1,10 @@
 import React from 'react';
+import Contacts from '../components/contacts';
 
 const ContactsPage:React.FC = () => {
   return (
-    <main>
+    <main className="main">
+      <Contacts />
     </main> 
   )
 }

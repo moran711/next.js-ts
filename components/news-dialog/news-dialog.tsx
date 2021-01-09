@@ -15,7 +15,10 @@ const DialogWindow:React.FC<{handleClose(event:MouseEvent):void, isOpen:boolean}
       aria-labelledby="customized-dialog-title"
       open={isOpen}
     >
-      <img src={image} alt="news photo"/>
+      <img src={image} className="dialog-img" alt="news photo" style={{
+        height: '100%',
+        width: '100%'
+      }}/>
       <Typography variant="h4">{title}</Typography>
       <Typography>{text}</Typography>
       <Button onClick={handleClose}>Close</Button>
