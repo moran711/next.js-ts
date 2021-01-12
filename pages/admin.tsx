@@ -1,8 +1,10 @@
 import React from 'react';
+import AdminForm from '../components/admin-form';
 
 const AdminPage:React.FC = () => {
   return (
-    <main>
+    <main className="main">
+      <AdminForm />
     </main> 
   )
 }
