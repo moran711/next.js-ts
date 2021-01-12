@@ -5,4 +5,3 @@ export const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   uri: '/api/graphql',
   cache: new InMemoryCache({ addTypename: false }),
 });
-``;
