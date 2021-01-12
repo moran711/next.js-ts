@@ -26,6 +26,10 @@
   }
 }
 
+.MuiDialog-paper .MuiTypography-root {
+  padding: 10px;
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .main {
     & .news-list {
