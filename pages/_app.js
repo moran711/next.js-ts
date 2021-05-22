@@ -7,6 +7,7 @@ import '../styles/index.scss';
 import Head from 'next/head';
 import NavMenu from '../components/nav-menu';
 import Footer from '../components/footer';
+import SnackbarItem from '../components/snackbar';
 import {rootReducer} from '../redux/rootReducer';
 import rootSaga from '../redux/rootSagas';
 import { client } from '../utils/client';
@@ -34,6 +35,7 @@ function MyApp({ Component, pageProps }) {
           <NavMenu />
           <Component {...pageProps} />
           <Footer />
+          <SnackbarItem />
         </Container>
       </Provider>
     </ApolloProvider>

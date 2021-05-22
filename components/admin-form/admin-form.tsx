@@ -1,14 +1,13 @@
 import React, { ChangeEvent, useState } from "react";
-import { Button, TextField, Snackbar } from "@material-ui/core";
-import MuiAlert from '@material-ui/lab/Alert';
+import { Button, TextField } from "@material-ui/core";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { gql } from "apollo-boost";
 import { useMutation } from "@apollo/client";
+import { useDispatch } from "react-redux";
+import { setSnackBarMessage, setSnackBarSeverity, setSnackBarStatus } from "../../redux/snackbar/snackbar.actions";
+import { useRouter } from "next/router";
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
 
 const ADD_NEWS = gql`
   mutation($image: String!, $title: String, $text: String) {
@@ -33,25 +32,22 @@ const validationSchema = yup.object({
 });
 
 const AdminForm: React.FC = () => {
+  const dispatch = useDispatch();
   const [image, setImage] = useState(null);
 
-  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false);
-  const [snackbarMessage, setSnackbarMessage] = useState<string>('');
+  const router = useRouter();
+  const refreshData = () => {
+    router.replace(router.asPath);
+  }
 
   const [addNews, { data }] = useMutation(ADD_NEWS);
 
-  const openSnackbarWithMessage = (message:string) => {
-    setSnackbarMessage(message);
-    setOpenSnackbar(true);
+  const openSnackbarWithMessage = (message:string, severity?:string) => {
+    dispatch(setSnackBarSeverity(severity));
+    dispatch(setSnackBarMessage(message));
+    dispatch(setSnackBarStatus(true))
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpenSnackbar(false);
-  };
 
   const formik = useFormik({
     initialValues: {
@@ -61,7 +57,7 @@ const AdminForm: React.FC = () => {
     validationSchema,
     onSubmit: (values, { resetForm }) => {
       if (!image) {
-        openSnackbarWithMessage('Please add photo');
+        openSnackbarWithMessage('Please add photo', 'error');
         return;
       }
       
@@ -71,6 +67,7 @@ const AdminForm: React.FC = () => {
       }})
       setImage('');
       resetForm();
+      refreshData();
     },
   });
   const onImageChange = (e:ChangeEvent<HTMLInputElement>) => {
@@ -126,11 +123,6 @@ const AdminForm: React.FC = () => {
           </Button>
         </div>
       </form>
-      <Snackbar open={openSnackbar} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error">
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
     </>
   );
 };
